@@ -2,7 +2,6 @@ from django.db import models
 
 from users.models import User
 
-
 # Create your models here.
 
 class ProductCategori(models.Model):
@@ -49,7 +48,7 @@ class Basket(models.Model):
     objects = BasketQuerySet.as_manager()
 
     def __str__(self):
-        return f'Корзина для {self.user.email} | Продукты: {self.product.name} '
+        return f'Корзина для {self.user.username} | Продукты: {self.product.name} '
 
     def sum(self):
         return self.product.price * self.quantity

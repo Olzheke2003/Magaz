@@ -1,23 +1,18 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
-from products.models import ProductCategori, Product, Basket
 # from users.models import User
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import HttpResponse, HttpResponseRedirect, render
 # from django.core.paginator import Paginator
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
+
 from common.views import TitleMixin
+from products.models import Basket, Product, ProductCategori
 
 
 class IndexView(TitleMixin, TemplateView):
     template_name = 'products/index.html'
     title = 'Магазинчик'
 
-
-# def index(request):
-#     context = {
-#         'title': 'Магазинчик',
-#     }
-#     return render(request, 'products/index.html', context)
 
 class ProductListView(TitleMixin, ListView):
     model = Product
@@ -35,21 +30,6 @@ class ProductListView(TitleMixin, ListView):
 
         context['categories'] = ProductCategori.objects.all()
         return context
-
-
-# def products(request, category_id=None, page_number=1):
-#     products = Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
-#     per_page = 3
-#     paginator = Paginator(products, per_page)
-#     products_paginator = paginator.page(page_number)
-#
-#     context = {
-#         'title': 'Продуктики',
-#         'categories': ProductCategori.objects.all(),
-#         'products': products_paginator,
-#     }
-#     return render(request, 'products/products.html', context)
-#
 
 
 @login_required

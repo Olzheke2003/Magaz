@@ -1,11 +1,13 @@
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from users.models import User
-from django import forms
-from users.models import EmailVerification
 import uuid
 from datetime import timedelta
-from django.utils.timezone import now
+
+from django import forms
+from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
+                                       UserCreationForm)
 from django.core.mail import send_mail
+from django.utils.timezone import now
+
+from users.models import EmailVerification, User
 
 
 class UserLoginForm(AuthenticationForm):
