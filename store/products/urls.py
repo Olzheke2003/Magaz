@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from products.views import ProductListView, basket_add, basket_remove
 
@@ -10,4 +10,6 @@ urlpatterns = [
     path('page/<int:page>/', ProductListView.as_view(), name='paginator'),
     path('baskets/add/<int:product_id>/', basket_add, name='basket_add'),
     path('baskets/remove/<int:basket_id>/', basket_remove, name='basket_remove'),
+
+    path('accounts/', include('allauth.urls')),
 ]
