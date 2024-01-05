@@ -12,7 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
     fields = (('name', 'category'),
               'description', 'price',
               'quantity', 'image')
-    readonly_fields = ('name', 'category')
+    readonly_fields = ('name',)
     search_fields = ('name',)
     ordering = ('-price',)
 
